@@ -384,18 +384,24 @@ exports.download = async (req, res) => {
 
         // Launch browser
         const browser = await puppeteer.launch({
-            headless: true,
-            args: ["--no-sandbox", "--disable-setuid-sandbox"]
-        });
+    headless: true,
+    args: [
+        "--no-sandbox",
+        "--disable-setuid-sandbox",
+        "--disable-dev-shm-usage",
+        "--disable-gpu"
+    ]
+});
 
 
         const page = await browser.newPage();
 
 
         // Load resume HTML
-        await page.setContent(html, {
-            waitUntil: "networkidle0"
-        });
+       await page.setContent(html, {
+    waitUntil: "domcontentloaded",
+    timeout: 60000
+});
 
 
         // Generate PDF
