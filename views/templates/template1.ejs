@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title><%= name %> - Resume</title>
+
+<style>
+
+    @page {
+        size: A4;
+        margin: 12mm;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 30px;
+        background: #eef2f7;
+        font-family: "Calibri", "Segoe UI", Arial, sans-serif;
+        color: #1f2937;
+    }
+
+    .page {
+        width: 210mm;
+        min-height: 297mm;
+        max-width: 100%;
+        margin: auto;
+        background: white;
+        padding: 35px 45px;
+        box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+    }
+
+    /* ================= HEADER ================= */
+
+    .header {
+        border-bottom: 2px solid #2563eb;
+        padding-bottom: 18px;
+        margin-bottom: 25px;
+    }
+
+    .header h1 {
+        margin: 0;
+        font-size: 34px;
+        font-weight: 700;
+        color: #111827;
+        letter-spacing: 0.3px;
+    }
+
+    .job-title {
+        margin-top: 5px;
+        color: #2563eb;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .contact {
+        margin-top: 10px;
+        font-size: 13px;
+        color: #475569;
+        line-height: 1.8;
+    }
+
+    .contact a {
+        color: #2563eb;
+        text-decoration: none;
+    }
+
+    /* ================= SECTIONS ================= */
+
+    .section {
+        margin-bottom: 22px;
+    }
+
+    .section-title {
+        color: #1e40af;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        border-bottom: 1px solid #cbd5e1;
+        padding-bottom: 5px;
+        margin-bottom: 9px;
+    }
+
+    .content {
+        font-size: 13.5px;
+        color: #334155;
+        line-height: 1.65;
+        white-space: pre-line;
+    }
+
+    /* ================= TWO COLUMNS ================= */
+
+    .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 35px;
+    }
+
+    /* ================= EXPERIENCE ================= */
+
+    .experience-item {
+        margin-bottom: 15px;
+    }
+
+    .experience-title {
+        font-weight: 700;
+        color: #111827;
+        font-size: 14px;
+    }
+
+    .experience-company {
+        color: #475569;
+        font-size: 13px;
+        margin-top: 2px;
+    }
+
+    /* ================= PROJECTS ================= */
+
+    .project {
+        margin-bottom: 14px;
+    }
+
+    .project-name {
+        font-weight: 700;
+        color: #111827;
+        font-size: 14px;
+    }
+
+    .project-tech {
+        color: #2563eb;
+        font-size: 12.5px;
+        margin-top: 2px;
+    }
+
+    /* ================= SKILLS ================= */
+
+    .skills {
+        line-height: 1.8;
+    }
+
+    /* ================= LINKS ================= */
+
+    .links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .links a {
+        color: #2563eb;
+        font-size: 13px;
+        text-decoration: none;
+    }
+
+    /* ================= LIST ================= */
+
+    .content ul {
+        margin: 5px 0 0 20px;
+        padding: 0;
+    }
+
+    .content li {
+        margin-bottom: 5px;
+    }
+
+    /* ================= FOOTER ================= */
+
+    .footer {
+        text-align: center;
+        font-size: 10px;
+        color: #94a3b8;
+        border-top: 1px solid #e5e7eb;
+        padding-top: 12px;
+        margin-top: 30px;
+    }
+
+    /* ================= DOWNLOAD ================= */
+
+    .download-area {
+        text-align: center;
+        margin: 25px auto;
+    }
+
+    .download-btn {
+        display: inline-block;
+        background: #2563eb;
+        color: white;
+        padding: 13px 30px;
+        border-radius: 7px;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .download-btn:hover {
+        background: #1d4ed8;
+    }
+
+    /* ================= PRINT ================= */
+
+    @media print {
+
+        body {
+            background: white;
+            padding: 0;
+        }
+
+        .page {
+            width: 100%;
+            min-height: auto;
+            margin: 0;
+            padding: 20px 30px;
+            box-shadow: none;
+        }
+
+        .download-area {
+            display: none !important;
+        }
+
+        .footer {
+            display: none;
+        }
+
+        .section {
+            page-break-inside: avoid;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+    }
+
+    /* ================= MOBILE ================= */
+
+    @media (max-width: 700px) {
+
+        body {
+            padding: 10px;
+        }
+
+        .page {
+            padding: 25px 20px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+        }
+
+        .two-col {
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+<div class="page">
+
+```
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+    <h1>
+        <%= name %>
+    </h1>
+
+    <% if (typeof role !== "undefined" && role) { %>
+
+        <div class="job-title">
+            <%= role %>
+        </div>
+
+    <% } %>
+
+
+    <div class="contact">
+
+        <% if (email) { %>
+            <%= email %>
+        <% } %>
+
+        <% if (phone) { %>
+            &nbsp; | &nbsp;
+            <%= phone %>
+        <% } %>
+
+        <% if (location) { %>
+            &nbsp; | &nbsp;
+            <%= location %>
+        <% } %>
+
+    </div>
+
+</header>
+
+
+<!-- ================= PROFESSIONAL SUMMARY ================= -->
+
+<% if (summary) { %>
+
+    <section class="section">
+
+        <div class="section-title">
+            Professional Summary
+        </div>
+
+        <div class="content">
+            <%= summary %>
+        </div>
+
+    </section>
+
+<% } %>
+
+
+<!-- ================= CONTACT LINKS ================= -->
+
+<% if (
+    (typeof github !== "undefined" && github) ||
+    (typeof linkedin !== "undefined" && linkedin) ||
+    (typeof portfolio !== "undefined" && portfolio)
+) { %>
+
+    <section class="section">
+
+        <div class="section-title">
+            Professional Links
+        </div>
+
+        <div class="links">
+
+            <% if (typeof github !== "undefined" && github) { %>
+
+                <a href="<%= github %>">
+                    GitHub
+                </a>
+
+            <% } %>
+
+
+            <% if (typeof linkedin !== "undefined" && linkedin) { %>
+
+                <a href="<%= linkedin %>">
+                    LinkedIn
+                </a>
+
+            <% } %>
+
+
+            <% if (typeof portfolio !== "undefined" && portfolio) { %>
+
+                <a href="<%= portfolio %>">
+                    Portfolio
+                </a>
+
+            <% } %>
+
+        </div>
+
+    </section>
+
+<% } %>
+
+
+<!-- ================= SKILLS + EDUCATION ================= -->
+
+<section class="section two-col">
+
+
+    <!-- SKILLS -->
+
+    <% if (skills) { %>
+
+        <div>
+
+            <div class="section-title">
+                Technical Skills
+            </div>
+
+            <div class="content skills">
+                <%= skills %>
+            </div>
+
+        </div>
+
+    <% } %>
+
+
+    <!-- EDUCATION -->
+
+    <% if (education) { %>
+
+        <div>
+
+            <div class="section-title">
+                Education
+            </div>
+
+            <div class="content">
+                <%= education %>
+            </div>
+
+        </div>
+
+    <% } %>
+
+
+</section>
+
+
+<!-- ================= EXPERIENCE ================= -->
+
+<% if (experience) { %>
+
+    <section class="section">
+
+        <div class="section-title">
+            Experience & Internships
+        </div>
+
+        <div class="content">
+            <%= experience %>
+        </div>
+
+    </section>
+
+<% } %>
+
+
+<!-- ================= PROJECTS ================= -->
+
+<% if (typeof projects !== "undefined" && projects) { %>
+
+    <section class="section">
+
+        <div class="section-title">
+            Projects
+        </div>
+
+        <div class="content">
+            <%= projects %>
+        </div>
+
+    </section>
+
+<% } %>
+
+
+<!-- ================= CERTIFICATIONS ================= -->
+
+<% if (typeof certifications !== "undefined" && certifications) { %>
+
+    <section class="section">
+
+        <div class="section-title">
+            Certifications
+        </div>
+
+        <div class="content">
+            <%= certifications %>
+        </div>
+
+    </section>
+
+<% } %>
+
+
+<!-- ================= ACHIEVEMENTS ================= -->
+
+<% if (typeof achievements !== "undefined" && achievements) %>
+
+    <section class="section">
+
+        <div class="section-title">
+            Achievements
+        </div>
+
+        <div class="content">
+            <%= achievements %>
+        </div>
+
+    </section>
+
+<% } %>
+
+
+<!-- ================= LANGUAGES ================= -->
+
+<% if (typeof languages !== "undefined" && languages) { %>
+
+    <section class="section">
+
+        <div class="section-title">
+            Languages
+        </div>
+
+        <div class="content">
+            <%= languages %>
+        </div>
+
+    </section>
+
+<% } %>
+
+
+<!-- ================= FOOTER ================= -->
+
+<div class="footer">
+
+    Resume generated with ResumeCloud
+
+</div>
+```
+
+</div>
+
+<!-- ================= DOWNLOAD BUTTON ================= -->
+
+<div class="download-area no-print">
+
+```
+<a
+    href="/download"
+    class="download-btn"
+>
+    Download PDF
+</a>
+```
+
+</div>
+
+</body>
+
+</html>

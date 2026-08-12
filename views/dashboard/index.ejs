@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | ResumeCloud</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #f8fafc;
+            color: #0f172a;
+            font-family: Inter, "Segoe UI", Arial, sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            height: 72px;
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 48px;
+
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-icon {
+            width: 34px;
+            height: 34px;
+
+            background: #2563eb;
+            color: white;
+
+            border-radius: 8px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .brand-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .brand-name span {
+            color: #2563eb;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .user-email {
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        .logout {
+            color: #dc2626;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .logout:hover {
+            color: #b91c1c;
+        }
+
+
+        /* ================= MAIN ================= */
+
+        .main {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 42px 30px 70px;
+        }
+
+
+        /* ================= WELCOME ================= */
+
+        .welcome {
+            margin-bottom: 32px;
+        }
+
+        .welcome h1 {
+            margin: 0;
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .welcome p {
+            margin: 8px 0 0;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+
+        /* ================= STATS ================= */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 20px 22px;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-size: 25px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+
+        /* ================= CREATE ================= */
+
+        .create-card {
+            background: #0f172a;
+            border-radius: 12px;
+
+            padding: 30px 32px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 30px;
+
+            margin-bottom: 42px;
+        }
+
+        .create-content h2 {
+            margin: 0;
+            color: white;
+            font-size: 21px;
+        }
+
+        .create-content p {
+            margin: 7px 0 0;
+            color: #cbd5e1;
+            font-size: 14px;
+        }
+
+        .create-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #2563eb;
+            color: white;
+
+            padding: 12px 20px;
+
+            border-radius: 7px;
+
+            font-size: 14px;
+            font-weight: 600;
+
+            white-space: nowrap;
+        }
+
+        .create-button:hover {
+            background: #1d4ed8;
+        }
+
+
+        /* ================= SECTION HEADER ================= */
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 18px;
+        }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .resume-count {
+            color: #64748b;
+            font-size: 13px;
+        }
+
+
+        /* ================= RESUME GRID ================= */
+
+        .resume-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+
+        /* ================= RESUME CARD ================= */
+
+        .resume-card {
+            background: white;
+
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+
+            overflow: hidden;
+
+            transition: all 0.2s ease;
+        }
+
+        .resume-card:hover {
+            border-color: #bfdbfe;
+            box-shadow: 0 8px 25px rgba(15, 23, 42, 0.08);
+            transform: translateY(-2px);
+        }
+
+
+        /* Resume preview */
+
+        .resume-preview {
+            height: 180px;
+            background: #f1f5f9;
+
+            padding: 18px;
+
+            display: flex;
+            justify-content: center;
+        }
+
+        .paper {
+            width: 125px;
+            height: 155px;
+
+            background: white;
+
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+
+            padding: 13px;
+        }
+
+        .paper-line-blue {
+            width: 100%;
+            height: 4px;
+            background: #2563eb;
+            margin-bottom: 10px;
+        }
+
+        .paper-name {
+            width: 65%;
+            height: 7px;
+            background: #1e293b;
+            margin-bottom: 5px;
+        }
+
+        .paper-small {
+            width: 45%;
+            height: 4px;
+            background: #94a3b8;
+            margin-bottom: 12px;
+        }
+
+        .paper-title {
+            width: 40%;
+            height: 4px;
+            background: #2563eb;
+            margin: 9px 0 6px;
+        }
+
+        .paper-text {
+            width: 100%;
+            height: 3px;
+            background: #cbd5e1;
+            margin-bottom: 4px;
+        }
+
+
+        /* Card information */
+
+        .resume-info {
+            padding: 18px;
+        }
+
+        .resume-info h3 {
+            margin: 0;
+
+            font-size: 16px;
+            font-weight: 700;
+
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .resume-template {
+            margin-top: 5px;
+
+            color: #64748b;
+            font-size: 12px;
+        }
+
+        .resume-date {
+            margin-top: 4px;
+
+            color: #94a3b8;
+            font-size: 11px;
+        }
+
+
+        /* Actions */
+
+        .resume-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+
+            gap: 7px;
+
+            margin-top: 15px;
+        }
+
+        .action {
+            text-align: center;
+
+            padding: 8px 5px;
+
+            border-radius: 6px;
+
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .view {
+            background: #eff6ff;
+            color: #2563eb;
+        }
+
+        .edit {
+            background: #f8fafc;
+            color: #475569;
+        }
+
+        .delete {
+            background: #fef2f2;
+            color: #dc2626;
+        }
+
+        .view:hover {
+            background: #dbeafe;
+        }
+
+        .edit:hover {
+            background: #e2e8f0;
+        }
+
+        .delete:hover {
+            background: #fee2e2;
+        }
+
+
+        /* ================= EMPTY STATE ================= */
+
+        .empty-state {
+            background: white;
+
+            border: 1px dashed #cbd5e1;
+            border-radius: 12px;
+
+            padding: 70px 20px;
+
+            text-align: center;
+        }
+
+        .empty-icon {
+            width: 58px;
+            height: 58px;
+
+            margin: 0 auto 18px;
+
+            border-radius: 10px;
+
+            background: #eff6ff;
+            color: #2563eb;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 25px;
+        }
+
+        .empty-state h3 {
+            margin: 0;
+
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .empty-state p {
+            margin: 8px 0 22px;
+
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .empty-button {
+            display: inline-block;
+
+            background: #2563eb;
+            color: white;
+
+            padding: 11px 20px;
+
+            border-radius: 7px;
+
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .empty-button:hover {
+            background: #1d4ed8;
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 900px) {
+
+            .navbar {
+                padding: 0 25px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .resume-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+        }
+
+        @media (max-width: 650px) {
+
+            .navbar {
+                padding: 0 18px;
+            }
+
+            .user-email {
+                display: none;
+            }
+
+            .main {
+                padding: 30px 18px 50px;
+            }
+
+            .welcome h1 {
+                font-size: 25px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .create-card {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 25px;
+            }
+
+            .resume-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <a href="/dashboard" class="brand">
+
+        <div class="brand-icon">
+            R
+        </div>
+
+        <div class="brand-name">
+            Resume<span>Cloud</span>
+        </div>
+
+    </a>
+
+
+    <div class="nav-right">
+
+        <% if (user && user.email) { %>
+
+            <div class="user-email">
+                <%= user.email %>
+            </div>
+
+        <% } %>
+
+        <a href="/logout" class="logout">
+            Logout
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- ================= MAIN ================= -->
+
+<main class="main">
+
+
+    <!-- WELCOME -->
+
+    <section class="welcome">
+
+        <h1>
+            Welcome back, <%= user.name %>
+        </h1>
+
+        <p>
+            Manage your resumes, create new ones and keep your career profile up to date.
+        </p>
+
+    </section>
+
+
+    <!-- ================= STATS ================= -->
+
+    <section class="stats">
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                Total Resumes
+            </div>
+
+            <div class="stat-value">
+                <%= resumes ? resumes.length : 0 %>
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                Templates Available
+            </div>
+
+            <div class="stat-value">
+                3
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-label">
+                Account Status
+            </div>
+
+            <div class="stat-value" style="font-size:18px;color:#16a34a;">
+                Active
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CREATE ================= -->
+
+    <section class="create-card">
+
+        <div class="create-content">
+
+            <h2>
+                Build your next professional resume
+            </h2>
+
+            <p>
+                Choose a template and create an ATS-friendly resume in minutes.
+            </p>
+
+        </div>
+
+
+        <a
+            href="/templates"
+            class="create-button"
+        >
+            + Create New Resume
+        </a>
+
+    </section>
+
+
+    <!-- ================= MY RESUMES ================= -->
+
+    <div class="section-header">
+
+        <h2>
+            My Resumes
+        </h2>
+
+        <span class="resume-count">
+
+            <%= resumes ? resumes.length : 0 %>
+            <%= resumes && resumes.length === 1 ? "resume" : "resumes" %>
+
+        </span>
+
+    </div>
+
+
+    <% if (resumes && resumes.length > 0) { %>
+
+
+        <div class="resume-grid">
+
+
+            <% resumes.forEach(function(resume) { %>
+
+
+                <article class="resume-card">
+
+
+                    <!-- MINI PREVIEW -->
+
+                    <div class="resume-preview">
+
+                        <div class="paper">
+
+                            <div class="paper-line-blue"></div>
+
+                            <div class="paper-name"></div>
+
+                            <div class="paper-small"></div>
+
+                            <div class="paper-title"></div>
+
+                            <div class="paper-text"></div>
+                            <div class="paper-text"></div>
+                            <div class="paper-text"></div>
+
+                            <div class="paper-title"></div>
+
+                            <div class="paper-text"></div>
+                            <div class="paper-text"></div>
+                            <div class="paper-text"></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- INFORMATION -->
+
+                    <div class="resume-info">
+
+                        <h3>
+                            <%= resume.title || "My Resume" %>
+                        </h3>
+
+
+                        <div class="resume-template">
+
+                            <%= resume.template
+                                ? resume.template.charAt(0).toUpperCase() + resume.template.slice(1)
+                                : "Professional"
+                            %>
+                            Template
+
+                        </div>
+
+
+                        <% if (resume.createdAt) { %>
+
+                            <div class="resume-date">
+
+                                Created
+                                <%= new Date(resume.createdAt).toLocaleDateString() %>
+
+                            </div>
+
+                        <% } %>
+
+
+                        <div class="resume-actions">
+
+                            <a
+                                href="/resume/view/<%= resume._id %>"
+                                class="action view"
+                            >
+                                View
+                            </a>
+
+
+                            <a
+                                href="/resume/edit/<%= resume._id %>"
+                                class="action edit"
+                            >
+                                Edit
+                            </a>
+
+
+                            <a
+                                href="/resume/delete/<%= resume._id %>"
+                                class="action delete"
+                                onclick="return confirm('Delete this resume?')"
+                            >
+                                Delete
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                </article>
+
+
+            <% }); %>
+
+
+        </div>
+
+
+    <% } else { %>
+
+
+        <!-- EMPTY -->
+
+        <section class="empty-state">
+
+            <div class="empty-icon">
+                📄
+            </div>
+
+            <h3>
+                No resumes yet
+            </h3>
+
+            <p>
+                Create your first resume and start building your professional profile.
+            </p>
+
+            <a
+                href="/templates"
+                class="empty-button"
+            >
+                Create Your First Resume
+            </a>
+
+        </section>
+
+
+    <% } %>
+
+
+</main>
+
+
+</body>
+
+</html>

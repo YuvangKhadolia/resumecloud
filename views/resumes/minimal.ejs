@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        <%= resumeData.name || "Resume" %> | Executive Resume
+    </title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0;
+
+            padding: 35px 20px;
+
+            background: #e8edf3;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            color: #1f2937;
+        }
+
+
+        /* =====================================================
+           MAIN RESUME
+        ===================================================== */
+
+        .resume {
+
+            width: 900px;
+
+            max-width: 95%;
+
+            min-height: 1100px;
+
+            margin: 0 auto;
+
+            display: grid;
+
+            grid-template-columns: 270px 1fr;
+
+            background: #ffffff;
+
+            box-shadow:
+                0 12px 35px rgba(0, 0, 0, 0.12);
+        }
+
+
+        /* =====================================================
+           LEFT SIDEBAR
+        ===================================================== */
+
+        .sidebar {
+
+            background: #172033;
+
+            color: white;
+
+            padding: 45px 30px;
+        }
+
+
+        .sidebar-name {
+
+            margin: 0;
+
+            font-size: 28px;
+
+            line-height: 1.2;
+
+            font-weight: 700;
+
+            letter-spacing: 0.5px;
+
+            word-break: break-word;
+        }
+
+
+        .sidebar-role {
+
+            margin-top: 12px;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+
+            color: #b8c7dc;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.2px;
+        }
+
+
+        .sidebar-line {
+
+            width: 45px;
+
+            height: 3px;
+
+            margin: 25px 0;
+
+            background: #3b82f6;
+        }
+
+
+        /* =====================================================
+           SIDEBAR SECTIONS
+        ===================================================== */
+
+        .sidebar-section {
+
+            margin-top: 28px;
+        }
+
+
+        .sidebar-title {
+
+            margin-bottom: 12px;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.5px;
+
+            color: #8fb7ed;
+        }
+
+
+        .sidebar-content {
+
+            font-size: 12px;
+
+            line-height: 1.8;
+
+            color: #d7dfeb;
+
+            word-break: break-word;
+        }
+
+
+        .sidebar-content a {
+
+            color: #d7dfeb;
+
+            text-decoration: none;
+        }
+
+
+        .sidebar-content a:hover {
+
+            color: #ffffff;
+        }
+
+
+        /* =====================================================
+           SKILLS
+        ===================================================== */
+
+        .sidebar-skills {
+
+            list-style: none;
+
+            margin: 0;
+
+            padding: 0;
+        }
+
+
+        .sidebar-skills li {
+
+            margin-bottom: 9px;
+
+            padding-left: 13px;
+
+            position: relative;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+
+            color: #d7dfeb;
+        }
+
+
+        .sidebar-skills li::before {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            top: 7px;
+
+            width: 5px;
+
+            height: 5px;
+
+            background: #3b82f6;
+
+            border-radius: 50%;
+        }
+
+
+        /* =====================================================
+           MAIN CONTENT
+        ===================================================== */
+
+        .main {
+
+            padding: 45px 45px 50px;
+
+            background: #ffffff;
+        }
+
+
+        /* =====================================================
+           MAIN SECTIONS
+        ===================================================== */
+
+        .section {
+
+            margin-bottom: 30px;
+        }
+
+
+        .section-header {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .section-number {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            width: 28px;
+
+            height: 28px;
+
+            flex-shrink: 0;
+
+            background: #172033;
+
+            color: white;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            border-radius: 4px;
+        }
+
+
+        .section-title {
+
+            margin: 0;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            color: #172033;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+
+        .section-line {
+
+            flex: 1;
+
+            height: 1px;
+
+            background: #d7dde6;
+        }
+
+
+        .content {
+
+            font-size: 13px;
+
+            line-height: 1.8;
+
+            color: #4b5563;
+
+            white-space: pre-line;
+        }
+
+
+        /* =====================================================
+           EXPERIENCE / EDUCATION / PROJECT ITEMS
+        ===================================================== */
+
+        .item {
+
+            margin-bottom: 20px;
+
+            padding-left: 18px;
+
+            border-left: 2px solid #dbe4f0;
+        }
+
+
+        .item:last-child {
+
+            margin-bottom: 0;
+        }
+
+
+        .item-title {
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            color: #172033;
+        }
+
+
+        .item-subtitle {
+
+            margin-top: 4px;
+
+            font-size: 12px;
+
+            color: #64748b;
+        }
+
+
+        /* =====================================================
+           LINKS
+        ===================================================== */
+
+        .links {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+        }
+
+
+        .link {
+
+            display: inline-block;
+
+            padding: 7px 12px;
+
+            border: 1px solid #d8e0ea;
+
+            color: #2563eb;
+
+            text-decoration: none;
+
+            border-radius: 4px;
+
+            font-size: 12px;
+        }
+
+
+        .link:hover {
+
+            background: #eff6ff;
+
+            border-color: #93c5fd;
+        }
+
+
+        /* =====================================================
+           DOWNLOAD
+        ===================================================== */
+
+        .actions {
+
+            text-align: center;
+
+            margin-top: 35px;
+
+            padding-top: 25px;
+
+            border-top: 1px solid #e2e8f0;
+        }
+
+
+        .btn {
+
+            display: inline-block;
+
+            background: #2563eb;
+
+            color: white;
+
+            padding: 12px 28px;
+
+            border-radius: 6px;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease;
+        }
+
+
+        .btn:hover {
+
+            background: #1d4ed8;
+
+            transform: translateY(-1px);
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 700px) {
+
+            body {
+
+                padding: 10px;
+            }
+
+
+            .resume {
+
+                display: block;
+
+                max-width: 100%;
+            }
+
+
+            .sidebar {
+
+                padding: 35px 25px;
+            }
+
+
+            .main {
+
+                padding: 35px 25px;
+            }
+
+
+            .sidebar-name {
+
+                font-size: 25px;
+            }
+        }
+
+
+        /* =====================================================
+           PRINT / PDF
+        ===================================================== */
+
+        @media print {
+
+            @page {
+
+                size: A4;
+
+                margin: 0;
+            }
+
+
+            body {
+
+                padding: 0;
+
+                background: white;
+            }
+
+
+            .resume {
+
+                width: 100%;
+
+                max-width: none;
+
+                min-height: auto;
+
+                box-shadow: none;
+            }
+
+
+            .actions {
+
+                display: none !important;
+            }
+
+
+            .section {
+
+                break-inside: avoid;
+            }
+
+
+            .item {
+
+                break-inside: avoid;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<%
+    /* =====================================================
+       PREPARE SKILLS SAFELY
+    ===================================================== */
+
+    var executiveSkills = [];
+
+    if (Array.isArray(resumeData.skills)) {
+
+        executiveSkills = resumeData.skills;
+
+    } else if (
+        typeof resumeData.skills === "string"
+    ) {
+
+        executiveSkills = resumeData.skills
+            .split(",")
+            .map(function(skill) {
+                return skill.trim();
+            })
+            .filter(function(skill) {
+                return skill.length > 0;
+            });
+
+    } else if (
+        resumeData.skills &&
+        typeof resumeData.skills === "object"
+    ) {
+
+        executiveSkills =
+            Object.values(resumeData.skills)
+            .flatMap(function(value) {
+
+                if (Array.isArray(value)) {
+
+                    return value;
+
+                }
+
+                if (typeof value === "string") {
+
+                    return value
+                        .split(",")
+                        .map(function(skill) {
+                            return skill.trim();
+                        })
+                        .filter(Boolean);
+                }
+
+                return [];
+
+            });
+    }
+%>
+
+
+<!-- =====================================================
+     RESUME
+===================================================== -->
+
+<div class="resume">
+
+
+    <!-- =================================================
+         SIDEBAR
+    ================================================= -->
+
+    <aside class="sidebar">
+
+
+        <!-- NAME -->
+
+        <h1 class="sidebar-name">
+
+            <%= resumeData.name || "" %>
+
+        </h1>
+
+
+        <!-- ROLE -->
+
+        <% if (resumeData.role) { %>
+
+            <div class="sidebar-role">
+
+                <%= resumeData.role %>
+
+            </div>
+
+        <% } else { %>
+
+            <div class="sidebar-role">
+
+                Professional
+
+            </div>
+
+        <% } %>
+
+
+        <div class="sidebar-line"></div>
+
+
+        <!-- =============================================
+             CONTACT
+        ============================================== -->
+
+        <div class="sidebar-section">
+
+            <div class="sidebar-title">
+                Contact
+            </div>
+
+
+            <div class="sidebar-content">
+
+
+                <% if (resumeData.email) { %>
+
+                    <div>
+                        <%= resumeData.email %>
+                    </div>
+
+                <% } %>
+
+
+                <% if (resumeData.phone) { %>
+
+                    <div>
+                        <%= resumeData.phone %>
+                    </div>
+
+                <% } %>
+
+
+                <% if (resumeData.location) { %>
+
+                    <div>
+                        <%= resumeData.location %>
+                    </div>
+
+                <% } %>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- =============================================
+             SKILLS
+        ============================================== -->
+
+        <% if (executiveSkills.length > 0) { %>
+
+            <div class="sidebar-section">
+
+                <div class="sidebar-title">
+                    Core Skills
+                </div>
+
+
+                <ul class="sidebar-skills">
+
+                    <% executiveSkills.forEach(function(skill) { %>
+
+                        <li>
+                            <%= skill %>
+                        </li>
+
+                    <% }); %>
+
+                </ul>
+
+            </div>
+
+        <% } %>
+
+
+        <!-- =============================================
+             LANGUAGES
+        ============================================== -->
+
+        <% if (resumeData.languages) { %>
+
+            <div class="sidebar-section">
+
+                <div class="sidebar-title">
+                    Languages
+                </div>
+
+
+                <div class="sidebar-content">
+
+                    <%= resumeData.languages %>
+
+                </div>
+
+            </div>
+
+        <% } %>
+
+
+        <!-- =============================================
+             LINKS
+        ============================================== -->
+
+        <% if (
+            resumeData.github ||
+            resumeData.linkedin ||
+            resumeData.portfolio
+        ) { %>
+
+            <div class="sidebar-section">
+
+                <div class="sidebar-title">
+                    Online
+                </div>
+
+
+                <div class="sidebar-content">
+
+
+                    <% if (resumeData.github) { %>
+
+                        <div>
+
+                            <a
+                                href="<%= resumeData.github %>"
+                                target="_blank"
+                            >
+                                GitHub
+                            </a>
+
+                        </div>
+
+                    <% } %>
+
+
+                    <% if (resumeData.linkedin) { %>
+
+                        <div>
+
+                            <a
+                                href="<%= resumeData.linkedin %>"
+                                target="_blank"
+                            >
+                                LinkedIn
+                            </a>
+
+                        </div>
+
+                    <% } %>
+
+
+                    <% if (resumeData.portfolio) { %>
+
+                        <div>
+
+                            <a
+                                href="<%= resumeData.portfolio %>"
+                                target="_blank"
+                            >
+                                Portfolio
+                            </a>
+
+                        </div>
+
+                    <% } %>
+
+
+                </div>
+
+            </div>
+
+        <% } %>
+
+
+    </aside>
+
+
+    <!-- =================================================
+         MAIN
+    ================================================= -->
+
+    <main class="main">
+
+
+        <!-- =============================================
+             PROFESSIONAL SUMMARY
+        ============================================== -->
+
+        <% if (
+            resumeData.summary ||
+            resumeData.experience
+        ) { %>
+
+            <section class="section">
+
+                <div class="section-header">
+
+                    <div class="section-number">
+                        01
+                    </div>
+
+                    <h2 class="section-title">
+                        Profile
+                    </h2>
+
+                    <div class="section-line"></div>
+
+                </div>
+
+
+                <div class="content">
+
+                    <%= resumeData.summary ||
+                        resumeData.experience %>
+
+                </div>
+
+            </section>
+
+        <% } %>
+
+
+        <!-- =============================================
+             EDUCATION
+        ============================================== -->
+
+        <% if (resumeData.education) { %>
+
+            <section class="section">
+
+                <div class="section-header">
+
+                    <div class="section-number">
+                        02
+                    </div>
+
+                    <h2 class="section-title">
+                        Education
+                    </h2>
+
+                    <div class="section-line"></div>
+
+                </div>
+
+
+                <div class="item">
+
+                    <div class="item-title">
+                        Academic Background
+                    </div>
+
+
+                    <div class="item-subtitle">
+
+                        <%= resumeData.education %>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        <% } %>
+
+
+        <!-- =============================================
+             EXPERIENCE
+        ============================================== -->
+
+        <% if (resumeData.experience) { %>
+
+            <section class="section">
+
+                <div class="section-header">
+
+                    <div class="section-number">
+                        03
+                    </div>
+
+                    <h2 class="section-title">
+                        Experience
+                    </h2>
+
+                    <div class="section-line"></div>
+
+                </div>
+
+
+                <div class="item">
+
+                    <div class="item-title">
+                        Professional Experience
+                    </div>
+
+
+                    <div class="item-subtitle">
+
+                        <%= resumeData.experience %>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        <% } %>
+
+
+        <!-- =============================================
+             PROJECTS
+        ============================================== -->
+
+        <% if (resumeData.projects) { %>
+
+            <section class="section">
+
+                <div class="section-header">
+
+                    <div class="section-number">
+                        04
+                    </div>
+
+                    <h2 class="section-title">
+                        Projects
+                    </h2>
+
+                    <div class="section-line"></div>
+
+                </div>
+
+
+                <div class="content">
+
+                    <%= resumeData.projects %>
+
+                </div>
+
+            </section>
+
+        <% } %>
+
+
+        <!-- =============================================
+             CERTIFICATIONS
+        ============================================== -->
+
+        <% if (resumeData.certifications) { %>
+
+            <section class="section">
+
+                <div class="section-header">
+
+                    <div class="section-number">
+                        05
+                    </div>
+
+                    <h2 class="section-title">
+                        Certifications
+                    </h2>
+
+                    <div class="section-line"></div>
+
+                </div>
+
+
+                <div class="content">
+
+                    <%= resumeData.certifications %>
+
+                </div>
+
+            </section>
+
+        <% } %>
+
+
+        <!-- =============================================
+             ACHIEVEMENTS
+        ============================================== -->
+
+        <% if (resumeData.achievements) { %>
+
+            <section class="section">
+
+                <div class="section-header">
+
+                    <div class="section-number">
+                        06
+                    </div>
+
+                    <h2 class="section-title">
+                        Achievements
+                    </h2>
+
+                    <div class="section-line"></div>
+
+                </div>
+
+
+                <div class="content">
+
+                    <%= resumeData.achievements %>
+
+                </div>
+
+            </section>
+
+        <% } %>
+
+
+        <!-- =============================================
+             DOWNLOAD BUTTON
+        ============================================== -->
+
+        <div class="actions">
+
+            <a
+                href="/resume/download"
+                class="btn"
+            >
+                Download PDF
+            </a>
+
+        </div>
+
+
+    </main>
+
+
+</div>
+
+
+</body>
+
+</html>

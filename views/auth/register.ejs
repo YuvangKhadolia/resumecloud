@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register – ResumeCloud</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #eef2ff, #f8fafc);
+      font-family: "Segoe UI", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      background: white;
+      padding: 40px;
+      border-radius: 14px;
+      width: 400px;
+      box-shadow: 0 20px 40px rgba(0,0,0,.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #16a34a;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    p {
+      text-align: center;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>Create Account</h2>
+
+  <form method="POST" action="/register">
+    <input name="name" placeholder="Full Name" required>
+    <input name="email" placeholder="Email" required>
+    <input name="password" type="password" placeholder="Password" required>
+    <button>Create Account</button>
+  </form>
+
+  <p>Already have an account? <a href="/login">Login</a></p>
+</div>
+
+</body>
+</html>

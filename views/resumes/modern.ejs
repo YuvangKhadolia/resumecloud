@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title><%= resumeData.name %> | Resume</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background: #eef2f7;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #1e293b;
+    }
+
+    .resume {
+        width: 850px;
+        max-width: 95%;
+        margin: 40px auto;
+        background: white;
+        padding: 50px 60px;
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+    }
+
+    /* HEADER */
+
+    .header {
+        text-align: center;
+        border-bottom: 2px solid #1e40af;
+        padding-bottom: 20px;
+        margin-bottom: 25px;
+    }
+
+    .header h1 {
+        margin: 0;
+        font-size: 34px;
+        color: #0f172a;
+    }
+
+    .header .role {
+        margin-top: 8px;
+        font-size: 17px;
+        color: #2563eb;
+        font-weight: 600;
+    }
+
+    .contact {
+        margin-top: 12px;
+        font-size: 13px;
+        color: #475569;
+        line-height: 1.8;
+    }
+
+    .contact a {
+        color: #2563eb;
+        text-decoration: none;
+    }
+
+    /* SECTIONS */
+
+    .section {
+        margin-top: 25px;
+    }
+
+    .section-title {
+        font-size: 16px;
+        font-weight: 700;
+        color: #1e40af;
+        border-bottom: 1px solid #cbd5e1;
+        padding-bottom: 6px;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.7px;
+    }
+
+    .content {
+        font-size: 14px;
+        line-height: 1.7;
+        color: #334155;
+    }
+
+    /* EXPERIENCE / EDUCATION / PROJECT */
+
+    .item {
+        margin-bottom: 18px;
+    }
+
+    .item-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .item-title {
+        font-weight: 700;
+        font-size: 15px;
+        color: #0f172a;
+    }
+
+    .item-subtitle {
+        font-size: 14px;
+        color: #475569;
+        margin-top: 3px;
+    }
+
+    .date {
+        font-size: 13px;
+        color: #64748b;
+        white-space: nowrap;
+    }
+
+    ul {
+        margin: 7px 0 0 20px;
+        padding: 0;
+    }
+
+    li {
+        margin-bottom: 5px;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    /* SKILLS */
+
+    .skills {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .skill {
+        background: #eff6ff;
+        color: #1e40af;
+        border: 1px solid #bfdbfe;
+        padding: 6px 11px;
+        border-radius: 5px;
+        font-size: 13px;
+    }
+
+    /* LINKS */
+
+    .links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .links a {
+        color: #2563eb;
+        text-decoration: none;
+        font-size: 14px;
+    }
+
+    /* ACTION BUTTON */
+
+    .actions {
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    .btn {
+        display: inline-block;
+        background: #2563eb;
+        color: white;
+        padding: 12px 28px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    .btn:hover {
+        background: #1d4ed8;
+    }
+
+    /* PRINT */
+
+    @media print {
+
+        body {
+            background: white;
+        }
+
+        .resume {
+            width: 100%;
+            max-width: none;
+            margin: 0;
+            padding: 30px 40px;
+            box-shadow: none;
+        }
+
+        .actions {
+            display: none;
+        }
+
+        .section {
+            page-break-inside: avoid;
+        }
+
+        a {
+            color: inherit;
+        }
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+
+        .resume {
+            padding: 30px 20px;
+            margin: 10px auto;
+        }
+
+        .header h1 {
+            font-size: 28px;
+        }
+
+        .item-header {
+            display: block;
+        }
+
+        .date {
+            display: block;
+            margin-top: 3px;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+<div class="resume">
+
+```
+<!-- HEADER -->
+
+<header class="header">
+
+    <h1>
+        <%= resumeData.name %>
+    </h1>
+
+    <% if (resumeData.role) { %>
+        <div class="role">
+            <%= resumeData.role %>
+        </div>
+    <% } %>
+
+    <div class="contact">
+
+        <% if (resumeData.email) { %>
+            <%= resumeData.email %>
+        <% } %>
+
+        <% if (resumeData.phone) { %>
+            &nbsp; | &nbsp; <%= resumeData.phone %>
+        <% } %>
+
+        <% if (resumeData.location) { %>
+            &nbsp; | &nbsp; <%= resumeData.location %>
+        <% } %>
+
+    </div>
+
+</header>
+
+
+<!-- PROFESSIONAL SUMMARY -->
+
+<% if (resumeData.summary) { %>
+
+    <section class="section">
+
+        <div class="section-title">
+            Professional Summary
+        </div>
+
+        <div class="content">
+            <%= resumeData.summary %>
+        </div>
+
+    </section>
+
+<% } %>
+
+
+<!-- SOCIAL / PROFESSIONAL LINKS -->
+
+<% if (resumeData.github || resumeData.linkedin || resumeData.portfolio) { %>
+
+    <section class="section">
+
+        <div class="section-title">
+            Links
+        </div>
+
+        <div class="links">
+
+            <% if (resumeData.github) { %>
+                <a href="<%= resumeData.github %>">
+                    GitHub
+                </a>
+            <% } %>
+
+            <% if (resumeData.linkedin) { %>
+                <a href="<%= resumeData.linkedin %>">
+                    LinkedIn
+                </a>
+            <% } %>
+
+            <% if (resumeData.portfolio) { %>
+                <a href="<%= resumeData.portfolio %>">
+                    Portfolio
+                </a>
+            <% } %>
+
+        </div>
+
+    </section>
+
+<% } %>
+
+
+<!-- SKILLS -->
+<% if (resumeData.skills) { %>
+
+    <section class="section">
+
+        <div class="section-title">
+            Technical Skills
+        </div>
+
+        <div class="skills">
+            <%= resumeData.skills %>
+        </div>
+
+    </section>
+
+<% } %>
+
+
+<!-- EDUCATION -->
+
+<% if (resumeData.education) { %>
+
+    <section class="section">
+
+        <div class="section-title">
+            Education
+        </div>
+
+        <div class="content">
+            <%= resumeData.education %>
+        </div>
+
+    </section>
+
+<% } %>
+
+
+<!-- EXPERIENCE -->
+<% if (resumeData.experience) { %>
+
+    <section class="section">
+
+        <div class="section-title">
+            Experience & Internships
+        </div>
+
+        <div class="content">
+            <%= resumeData.experience %>
+        </div>
+
+    </section>
+
+<% } %>
+
+<!-- PROJECTS -->
+<% if (resumeData.projects) { %>
+
+    <section class="section">
+
+        <div class="section-title">
+            Projects
+        </div>
+
+        <div class="content">
+            <%= resumeData.projects %>
+        </div>
+
+    </section>
+
+<% } %>
+
+
+<!-- CERTIFICATIONS -->
+<% if (resumeData.certifications) { %>
+
+    <section class="section">
+
+        <div class="section-title">
+            Certifications
+        </div>
+
+        <div class="content">
+            <%= resumeData.certifications %>
+        </div>
+
+    </section>
+
+<% } %>
+
+<!-- ACHIEVEMENTS -->
+<% if (resumeData.achievements) { %>
+
+    <section class="section">
+
+        <div class="section-title">
+            Achievements
+        </div>
+
+        <div class="content">
+            <%= resumeData.achievements %>
+        </div>
+
+    </section>
+
+<% } %>
+
+
+<!-- LANGUAGES -->
+
+<% if (resumeData.languages) { %>
+
+    <section class="section">
+
+        <div class="section-title">
+            Languages
+        </div>
+
+        <div class="content">
+            <%= resumeData.languages %>
+        </div>
+
+    </section>
+
+<% } %>
+
+<!-- DOWNLOAD -->
+
+<div class="actions">
+
+    <a
+        href="/resume/download"
+        class="btn"
+    >
+        Download PDF
+    </a>
+
+</div>
+```
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1777 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ResumeCloud | Choose Template</title>
+
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        /* =====================================================
+           BODY
+        ===================================================== */
+
+        body {
+
+            min-height: 100vh;
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #f8fafc 0%,
+                    #f1f5f9 55%,
+                    #ffffff 100%
+                );
+
+            color: #0f172a;
+
+            font-family:
+                "Segoe UI",
+                Arial,
+                Helvetica,
+                sans-serif;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+
+            height: 64px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 42px;
+
+            background: rgba(255, 255, 255, 0.96);
+
+            border-bottom: 1px solid #e2e8f0;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+
+            backdrop-filter: blur(10px);
+        }
+
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            color: #0f172a;
+
+            text-decoration: none;
+        }
+
+
+        .brand-logo {
+
+            width: 36px;
+
+            height: 36px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 9px;
+
+            background: #2563eb;
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: 800;
+
+            box-shadow:
+                0 5px 14px
+                rgba(37, 99, 235, 0.25);
+        }
+
+
+        .brand-name {
+
+            font-size: 19px;
+
+            font-weight: 700;
+
+            letter-spacing: -0.3px;
+        }
+
+
+        .nav-text {
+
+            font-size: 13px;
+
+            color: #64748b;
+        }
+
+
+        /* =====================================================
+           PAGE CONTAINER
+        ===================================================== */
+
+        .container {
+
+            width: 100%;
+
+            max-width: 1180px;
+
+            margin: 0 auto;
+
+            padding: 28px 25px 90px;
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+
+            text-align: center;
+
+            margin-bottom: 25px;
+        }
+
+
+        .badge {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            padding: 6px 12px;
+
+            border-radius: 30px;
+
+            background: #eff6ff;
+
+            border: 1px solid #dbeafe;
+
+            color: #2563eb;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            margin-bottom: 9px;
+        }
+
+
+        .badge-dot {
+
+            width: 6px;
+
+            height: 6px;
+
+            background: #2563eb;
+
+            border-radius: 50%;
+        }
+
+
+        .hero h1 {
+
+            font-size: 32px;
+
+            line-height: 1.15;
+
+            letter-spacing: -1px;
+
+            color: #0f172a;
+
+            margin-bottom: 7px;
+        }
+
+
+        .hero h1 span {
+
+            color: #2563eb;
+        }
+
+
+        .hero p {
+
+            font-size: 13px;
+
+            line-height: 1.5;
+
+            color: #64748b;
+        }
+
+
+        /* =====================================================
+           TEMPLATE GRID
+        ===================================================== */
+
+        .grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 22px;
+
+            align-items: start;
+        }
+
+
+        /* =====================================================
+           CARD
+        ===================================================== */
+
+        .card {
+
+            background: #ffffff;
+
+            border: 1px solid #dbe3ed;
+
+            border-radius: 14px;
+
+            overflow: hidden;
+
+            transition:
+                transform 0.22s ease,
+                box-shadow 0.22s ease,
+                border-color 0.22s ease;
+        }
+
+
+        .card:hover {
+
+            transform: translateY(-4px);
+
+            border-color: #9bbcf7;
+
+            box-shadow:
+                0 16px 35px
+                rgba(15, 23, 42, 0.11);
+        }
+
+
+        /* =====================================================
+           PREVIEW AREA
+        ===================================================== */
+
+        .preview {
+
+            height: 245px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 18px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #f8fafc,
+                    #edf2f7
+                );
+
+            cursor: pointer;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+
+        .preview::before {
+
+            content: "PREVIEW";
+
+            position: absolute;
+
+            top: 12px;
+
+            left: 14px;
+
+            color: #94a3b8;
+
+            font-size: 8px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.4px;
+        }
+
+
+        .preview::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 130px;
+
+            height: 130px;
+
+            right: -45px;
+
+            bottom: -50px;
+
+            border-radius: 50%;
+
+            background: rgba(37, 99, 235, 0.05);
+        }
+
+
+        /* =====================================================
+           PAPER
+        ===================================================== */
+
+        .paper {
+
+            width: 145px;
+
+            height: 205px;
+
+            background: #ffffff;
+
+            position: relative;
+
+            z-index: 2;
+
+            box-shadow:
+                0 8px 20px
+                rgba(15, 23, 42, 0.15);
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+
+        .card:hover .paper {
+
+            transform: translateY(-3px) scale(1.015);
+
+            box-shadow:
+                0 13px 26px
+                rgba(15, 23, 42, 0.18);
+        }
+
+
+        /* =====================================================
+           MODERN TEMPLATE PREVIEW
+        ===================================================== */
+
+        .modern-preview {
+
+            padding: 14px;
+        }
+
+
+        .modern-preview .blue-line {
+
+            width: 100%;
+
+            height: 4px;
+
+            background: #2563eb;
+
+            margin-bottom: 9px;
+        }
+
+
+        .modern-preview .name {
+
+            width: 73%;
+
+            height: 9px;
+
+            background: #172033;
+
+            margin-bottom: 5px;
+        }
+
+
+        .modern-preview .small {
+
+            width: 50%;
+
+            height: 3px;
+
+            background: #94a3b8;
+
+            margin-bottom: 12px;
+        }
+
+
+        .modern-preview .section-line {
+
+            width: 42%;
+
+            height: 5px;
+
+            background: #2563eb;
+
+            margin: 10px 0 6px;
+        }
+
+
+        .modern-preview .text {
+
+            width: 100%;
+
+            height: 3px;
+
+            background: #cbd5e1;
+
+            margin-bottom: 4px;
+        }
+
+
+        .modern-preview .text.short {
+
+            width: 72%;
+        }
+
+
+        /* =====================================================
+           PROFESSIONAL TEMPLATE PREVIEW
+        ===================================================== */
+
+        .professional-preview {
+
+            display: grid;
+
+            grid-template-columns: 30% 70%;
+
+            overflow: hidden;
+        }
+
+
+        .professional-preview .sidebar {
+
+            background: #1e293b;
+
+            padding: 11px;
+        }
+
+
+        .professional-preview .side-name {
+
+            width: 70%;
+
+            height: 7px;
+
+            background: white;
+
+            margin-bottom: 7px;
+        }
+
+
+        .professional-preview .side-line {
+
+            width: 42%;
+
+            height: 3px;
+
+            background: #60a5fa;
+
+            margin-bottom: 12px;
+        }
+
+
+        .professional-preview .side-text {
+
+            width: 100%;
+
+            height: 3px;
+
+            background: #64748b;
+
+            margin-bottom: 5px;
+        }
+
+
+        .professional-preview .main {
+
+            padding: 12px;
+        }
+
+
+        .professional-preview .main-name {
+
+            width: 70%;
+
+            height: 8px;
+
+            background: #172033;
+
+            margin-bottom: 9px;
+        }
+
+
+        .professional-preview .section-line {
+
+            width: 42%;
+
+            height: 4px;
+
+            background: #475569;
+
+            margin: 9px 0 6px;
+        }
+
+
+        .professional-preview .text {
+
+            width: 100%;
+
+            height: 3px;
+
+            background: #cbd5e1;
+
+            margin-bottom: 4px;
+        }
+
+
+        .professional-preview .text.short {
+
+            width: 70%;
+        }
+
+
+        /* =====================================================
+           MINIMAL TEMPLATE PREVIEW
+        ===================================================== */
+
+        .minimal-preview {
+
+            padding: 18px 14px;
+        }
+
+
+        .minimal-preview .name {
+
+            width: 78%;
+
+            height: 9px;
+
+            background: #111827;
+
+            margin-bottom: 6px;
+        }
+
+
+        .minimal-preview .small {
+
+            width: 48%;
+
+            height: 3px;
+
+            background: #94a3b8;
+
+            margin-bottom: 18px;
+        }
+
+
+        .minimal-preview .section-line {
+
+            width: 35%;
+
+            height: 4px;
+
+            background: #111827;
+
+            margin: 13px 0 6px;
+        }
+
+
+        .minimal-preview .text {
+
+            width: 100%;
+
+            height: 2.5px;
+
+            background: #d1d5db;
+
+            margin-bottom: 4px;
+        }
+
+
+        .minimal-preview .text.short {
+
+            width: 70%;
+        }
+
+
+        /* =====================================================
+           CARD CONTENT
+        ===================================================== */
+
+        .card-content {
+
+            padding: 18px 19px 19px;
+        }
+
+
+        .template-label {
+
+            display: inline-block;
+
+            margin-bottom: 6px;
+
+            color: #2563eb;
+
+            font-size: 9px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.2px;
+
+            text-transform: uppercase;
+        }
+
+
+        .card h3 {
+
+            margin-bottom: 7px;
+
+            font-size: 19px;
+
+            line-height: 1.2;
+
+            color: #0f172a;
+
+            letter-spacing: -0.3px;
+        }
+
+
+        .card p {
+
+            min-height: 54px;
+
+            margin-bottom: 15px;
+
+            color: #64748b;
+
+            font-size: 12px;
+
+            line-height: 1.55;
+        }
+
+
+        /* =====================================================
+           BUTTON
+        ===================================================== */
+
+        .template-form {
+
+            margin: 0;
+        }
+
+
+        .select-btn {
+
+            width: 100%;
+
+            height: 40px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background: #2563eb;
+
+            color: #ffffff;
+
+            font-family: inherit;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition:
+                background 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        .select-btn:hover {
+
+            background: #1d4ed8;
+
+            box-shadow:
+                0 6px 15px
+                rgba(37, 99, 235, 0.22);
+        }
+
+
+        /* =====================================================
+           WHY SECTION
+        ===================================================== */
+
+        .why-section {
+
+            margin-top: 65px;
+
+            padding-top: 45px;
+
+            border-top: 1px solid #e2e8f0;
+        }
+
+
+        .why-header {
+
+            text-align: center;
+
+            max-width: 650px;
+
+            margin: 0 auto 30px;
+        }
+
+
+        .why-header h2 {
+
+            font-size: 25px;
+
+            color: #0f172a;
+
+            margin-bottom: 8px;
+        }
+
+
+        .why-header p {
+
+            color: #64748b;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        .features {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .feature {
+
+            background: #ffffff;
+
+            border: 1px solid #e2e8f0;
+
+            border-radius: 12px;
+
+            padding: 22px;
+
+            text-align: center;
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        .feature:hover {
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 10px 25px
+                rgba(15, 23, 42, 0.07);
+        }
+
+
+        .feature-icon {
+
+            width: 40px;
+
+            height: 40px;
+
+            margin: 0 auto 13px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 10px;
+
+            background: #eff6ff;
+
+            color: #2563eb;
+
+            font-size: 17px;
+
+            font-weight: 700;
+        }
+
+
+        .feature h3 {
+
+            font-size: 15px;
+
+            margin-bottom: 6px;
+
+            color: #172033;
+        }
+
+
+        .feature p {
+
+            font-size: 12px;
+
+            line-height: 1.6;
+
+            color: #64748b;
+        }
+
+
+        /* =====================================================
+           BOTTOM CTA
+        ===================================================== */
+
+        .bottom-cta {
+
+            margin-top: 50px;
+
+            padding: 35px 25px;
+
+            border-radius: 16px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #172033,
+                    #1e3a8a
+                );
+
+            text-align: center;
+
+            color: white;
+        }
+
+
+        .bottom-cta h2 {
+
+            font-size: 23px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .bottom-cta p {
+
+            color: #cbd5e1;
+
+            font-size: 13px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .bottom-cta-text {
+
+            display: inline-block;
+
+            padding: 9px 18px;
+
+            border-radius: 6px;
+
+            background: rgba(255,255,255,0.1);
+
+            border: 1px solid rgba(255,255,255,0.18);
+
+            font-size: 12px;
+
+            color: white;
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        .footer {
+
+            text-align: center;
+
+            padding-top: 30px;
+
+            color: #94a3b8;
+
+            font-size: 11px;
+        }
+
+
+        /* =====================================================
+           TABLET
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .grid {
+
+                grid-template-columns:
+                    repeat(3, minmax(0, 1fr));
+
+                gap: 12px;
+            }
+
+
+            .container {
+
+                padding-left: 15px;
+
+                padding-right: 15px;
+            }
+
+
+            .card-content {
+
+                padding: 15px;
+            }
+
+
+            .card h3 {
+
+                font-size: 17px;
+            }
+
+
+            .card p {
+
+                font-size: 11px;
+            }
+
+
+            .preview {
+
+                height: 220px;
+            }
+
+
+            .paper {
+
+                width: 125px;
+
+                height: 180px;
+            }
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 650px) {
+
+            .navbar {
+
+                padding: 0 18px;
+            }
+
+
+            .nav-text {
+
+                display: none;
+            }
+
+
+            .container {
+
+                padding:
+                    25px 14px 60px;
+            }
+
+
+            .hero {
+
+                margin-bottom: 25px;
+            }
+
+
+            .hero h1 {
+
+                font-size: 28px;
+            }
+
+
+            .hero p {
+
+                font-size: 12px;
+            }
+
+
+            .grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .preview {
+
+                height: 260px;
+            }
+
+
+            .paper {
+
+                width: 145px;
+
+                height: 205px;
+            }
+
+
+            .features {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .why-section {
+
+                margin-top: 45px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar">
+
+
+    <a href="/" class="brand">
+
+        <div class="brand-logo">
+            R
+        </div>
+
+
+        <div class="brand-name">
+            ResumeCloud
+        </div>
+
+    </a>
+
+
+    <div class="nav-text">
+        Build a resume that gets noticed
+    </div>
+
+
+</nav>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="container">
+
+
+    <!-- =================================================
+         HERO
+    ================================================== -->
+
+    <section class="hero">
+
+
+        <div class="badge">
+
+            <span class="badge-dot"></span>
+
+            3 Professional Templates
+
+        </div>
+
+
+        <h1>
+
+            Choose a template that
+            <span>fits your career.</span>
+
+        </h1>
+
+
+        <p>
+
+            Pick a professional design and start
+            building your resume in minutes.
+
+        </p>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         TEMPLATE CARDS
+    ================================================== -->
+
+    <section class="grid">
+
+
+        <!-- =================================================
+             MODERN
+        ================================================== -->
+
+        <div class="card">
+
+
+            <!-- CLICKABLE PREVIEW -->
+
+            <div
+                class="preview"
+                onclick="
+                    this.closest('.card')
+                    .querySelector('form')
+                    .submit()
+                "
+                title="Select Modern"
+            >
+
+                <div class="paper modern-preview">
+
+
+                    <div class="blue-line"></div>
+
+
+                    <div class="name"></div>
+
+
+                    <div class="small"></div>
+
+
+                    <div class="section-line"></div>
+
+
+                    <div class="text"></div>
+
+                    <div class="text"></div>
+
+                    <div class="text short"></div>
+
+
+                    <div class="section-line"></div>
+
+
+                    <div class="text"></div>
+
+                    <div class="text"></div>
+
+                    <div class="text short"></div>
+
+
+                    <div class="section-line"></div>
+
+
+                    <div class="text"></div>
+
+                    <div class="text short"></div>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTENT -->
+
+            <div class="card-content">
+
+
+                <div class="template-label">
+                    Contemporary
+                </div>
+
+
+                <h3>
+                    Modern
+                </h3>
+
+
+                <p>
+
+                    Clean and contemporary design
+                    suitable for software developers,
+                    students and modern professionals.
+
+                </p>
+
+
+                <form
+                    class="template-form"
+                    action="/resume/create"
+                    method="POST"
+                >
+
+                    <input
+                        type="hidden"
+                        name="title"
+                        value="My Resume"
+                    >
+
+
+                    <input
+                        type="hidden"
+                        name="template"
+                        value="modern"
+                    >
+
+
+                    <button
+                        type="submit"
+                        class="select-btn"
+                    >
+                        Select Modern
+                    </button>
+
+                </form>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             PROFESSIONAL
+        ================================================== -->
+
+        <div class="card">
+
+
+            <!-- CLICKABLE PREVIEW -->
+
+            <div
+                class="preview"
+                onclick="
+                    this.closest('.card')
+                    .querySelector('form')
+                    .submit()
+                "
+                title="Select Professional"
+            >
+
+
+                <div
+                    class="paper professional-preview"
+                >
+
+
+                    <div class="sidebar">
+
+
+                        <div class="side-name"></div>
+
+
+                        <div class="side-line"></div>
+
+
+                        <div class="side-text"></div>
+
+                        <div class="side-text"></div>
+
+                        <div class="side-text"></div>
+
+
+                        <div
+                            style="
+                                margin-top:16px;
+                                width:50%;
+                                height:3px;
+                                background:#60a5fa;
+                            "
+                        ></div>
+
+
+                        <div
+                            style="
+                                margin-top:7px;
+                                width:100%;
+                                height:3px;
+                                background:#64748b;
+                            "
+                        ></div>
+
+
+                        <div
+                            style="
+                                margin-top:5px;
+                                width:80%;
+                                height:3px;
+                                background:#64748b;
+                            "
+                        ></div>
+
+
+                    </div>
+
+
+                    <div class="main">
+
+
+                        <div class="main-name"></div>
+
+
+                        <div class="section-line"></div>
+
+                        <div class="text"></div>
+
+                        <div class="text"></div>
+
+                        <div class="text short"></div>
+
+
+                        <div class="section-line"></div>
+
+                        <div class="text"></div>
+
+                        <div class="text"></div>
+
+
+                        <div class="section-line"></div>
+
+                        <div class="text"></div>
+
+                        <div class="text"></div>
+
+                        <div class="text short"></div>
+
+
+                        <div class="section-line"></div>
+
+                        <div class="text"></div>
+
+                        <div class="text short"></div>
+
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTENT -->
+
+            <div class="card-content">
+
+
+                <div class="template-label">
+                    Corporate
+                </div>
+
+
+                <h3>
+                    Professional
+                </h3>
+
+
+                <p>
+
+                    Formal corporate layout designed
+                    for business, finance, consulting
+                    and experienced professionals.
+
+                </p>
+
+
+                <form
+                    class="template-form"
+                    action="/resume/create"
+                    method="POST"
+                >
+
+                    <input
+                        type="hidden"
+                        name="title"
+                        value="Corporate Resume"
+                    >
+
+
+                    <input
+                        type="hidden"
+                        name="template"
+                        value="professional"
+                    >
+
+
+                    <button
+                        type="submit"
+                        class="select-btn"
+                    >
+                        Select Professional
+                    </button>
+
+                </form>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             MINIMAL
+        ================================================== -->
+
+        <div class="card">
+
+
+            <!-- CLICKABLE PREVIEW -->
+
+            <div
+                class="preview"
+                onclick="
+                    this.closest('.card')
+                    .querySelector('form')
+                    .submit()
+                "
+                title="Select Minimal"
+            >
+
+
+                <div class="paper minimal-preview">
+
+
+                    <div class="name"></div>
+
+
+                    <div class="small"></div>
+
+
+                    <div class="section-line"></div>
+
+
+                    <div class="text"></div>
+
+                    <div class="text"></div>
+
+                    <div class="text short"></div>
+
+
+                    <div class="section-line"></div>
+
+
+                    <div class="text"></div>
+
+                    <div class="text"></div>
+
+                    <div class="text"></div>
+
+
+                    <div class="section-line"></div>
+
+
+                    <div class="text"></div>
+
+                    <div class="text short"></div>
+
+
+                    <div class="section-line"></div>
+
+
+                    <div class="text"></div>
+
+                    <div class="text"></div>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTENT -->
+
+            <div class="card-content">
+
+
+                <div class="template-label">
+                    ATS Friendly
+                </div>
+
+
+                <h3>
+                    Minimal
+                </h3>
+
+
+                <p>
+
+                    Simple distraction-free layout
+                    focused on readability, clarity
+                    and ATS-friendly formatting.
+
+                </p>
+
+
+                <form
+                    class="template-form"
+                    action="/resume/create"
+                    method="POST"
+                >
+
+                    <input
+                        type="hidden"
+                        name="title"
+                        value="Simple Resume"
+                    >
+
+
+                    <input
+                        type="hidden"
+                        name="template"
+                        value="minimal"
+                    >
+
+
+                    <button
+                        type="submit"
+                        class="select-btn"
+                    >
+                        Select Minimal
+                    </button>
+
+                </form>
+
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         WHY RESUMECLOUD
+    ===================================================== -->
+
+    <section class="why-section">
+
+
+        <div class="why-header">
+
+            <h2>
+                Everything you need to build a better resume
+            </h2>
+
+
+            <p>
+
+                Choose a design, add your information,
+                and create a professional resume ready
+                to share with employers.
+
+            </p>
+
+        </div>
+
+
+        <div class="features">
+
+
+            <!-- FEATURE 1 -->
+
+            <div class="feature">
+
+
+                <div class="feature-icon">
+                    ✓
+                </div>
+
+
+                <h3>
+                    Professional Designs
+                </h3>
+
+
+                <p>
+
+                    Carefully structured layouts
+                    designed to present your experience
+                    clearly and professionally.
+
+                </p>
+
+
+            </div>
+
+
+
+            <!-- FEATURE 2 -->
+
+            <div class="feature">
+
+
+                <div class="feature-icon">
+                    A
+                </div>
+
+
+                <h3>
+                    ATS Friendly
+                </h3>
+
+
+                <p>
+
+                    Clean formatting and readable
+                    sections help keep your resume
+                    easy for applicant systems to parse.
+
+                </p>
+
+
+            </div>
+
+
+
+            <!-- FEATURE 3 -->
+
+            <div class="feature">
+
+
+                <div class="feature-icon">
+                    ↓
+                </div>
+
+
+                <h3>
+                    PDF Ready
+                </h3>
+
+
+                <p>
+
+                    Generate a polished PDF version
+                    of your completed resume whenever
+                    you are ready to apply.
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         BOTTOM CTA
+    ===================================================== -->
+
+    <section class="bottom-cta">
+
+
+        <h2>
+            Your next opportunity starts here.
+        </h2>
+
+
+        <p>
+
+            Choose a template and turn your
+            information into a professional resume.
+
+        </p>
+
+
+        <div class="bottom-cta-text">
+
+            Select a template above to get started
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <footer class="footer">
+
+        © 2026 ResumeCloud · Professional Resume Builder
+
+    </footer>
+
+
+</main>
+
+
+</body>
+
+</html>

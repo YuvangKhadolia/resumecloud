@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        <%= resumeData.name || "Resume" %> | Professional
+    </title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 35px 20px;
+            background: #e7ebf0;
+            font-family: Georgia, "Times New Roman", serif;
+            color: #202020;
+        }
+
+        /* =========================================
+           RESUME PAPER
+        ========================================= */
+
+        .resume {
+            width: 850px;
+            max-width: 95%;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 50px 58px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.10);
+        }
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        .header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 3px double #222;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #111;
+        }
+
+        .role {
+            margin-top: 8px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #555;
+        }
+
+        .contact {
+            margin-top: 13px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .contact a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        /* =========================================
+           SECTIONS
+        ========================================= */
+
+        .section {
+            margin-top: 27px;
+        }
+
+        .section-title {
+            margin: 0 0 12px;
+            padding-bottom: 6px;
+
+            border-bottom: 1px solid #888;
+
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+
+            color: #222;
+        }
+
+        .content {
+            font-size: 14px;
+            line-height: 1.75;
+            color: #333;
+            white-space: pre-line;
+        }
+
+        /* =========================================
+           LINKS
+        ========================================= */
+
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+        .links a {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px solid #777;
+            padding-bottom: 2px;
+        }
+
+        .links a:hover {
+            color: #1e40af;
+            border-color: #1e40af;
+        }
+
+        /* =========================================
+           SKILLS
+        ========================================= */
+
+        .skills {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 45px;
+            row-gap: 8px;
+
+            margin: 0;
+            padding-left: 18px;
+        }
+
+        .skills li {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        /* =========================================
+           EDUCATION / EXPERIENCE
+        ========================================= */
+
+        .item {
+            margin-bottom: 17px;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 20px;
+        }
+
+        .item-title {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: #111;
+        }
+
+        .item-subtitle {
+            margin-top: 3px;
+            font-size: 13px;
+            font-style: italic;
+            color: #555;
+        }
+
+        .date {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            color: #666;
+            white-space: nowrap;
+        }
+
+        /* =========================================
+           DOWNLOAD BUTTON
+        ========================================= */
+
+        .actions {
+            text-align: center;
+            margin-top: 35px;
+            padding-top: 25px;
+            border-top: 1px solid #d1d5db;
+        }
+
+        .btn {
+            display: inline-block;
+
+            background: #2563eb;
+            color: #ffffff;
+
+            padding: 12px 28px;
+
+            border-radius: 6px;
+
+            text-decoration: none;
+
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: background 0.2s ease;
+        }
+
+        .btn:hover {
+            background: #1d4ed8;
+        }
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px 8px;
+            }
+
+            .resume {
+                max-width: 100%;
+                padding: 30px 22px;
+            }
+
+            .header h1 {
+                font-size: 27px;
+            }
+
+            .skills {
+                grid-template-columns: 1fr;
+            }
+
+            .item-header {
+                display: block;
+            }
+
+            .date {
+                display: block;
+                margin-top: 4px;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+<div class="resume">
+
+
+    <!-- =========================================
+         HEADER
+    ========================================= -->
+
+    <header class="header">
+
+        <h1>
+            <%= resumeData.name || "" %>
+        </h1>
+
+
+        <% if (resumeData.role) { %>
+
+            <div class="role">
+                <%= resumeData.role %>
+            </div>
+
+        <% } %>
+
+
+        <div class="contact">
+
+            <% if (resumeData.email) { %>
+                <%= resumeData.email %>
+            <% } %>
+
+
+            <% if (resumeData.email && resumeData.phone) { %>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+            <% } %>
+
+
+            <% if (resumeData.phone) { %>
+                <%= resumeData.phone %>
+            <% } %>
+
+
+            <% if (resumeData.location) { %>
+                &nbsp;&nbsp;|&nbsp;&nbsp;
+                <%= resumeData.location %>
+            <% } %>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================
+         PROFESSIONAL SUMMARY
+    ========================================= -->
+
+    <% if (resumeData.summary || resumeData.experience) { %>
+
+        <section class="section">
+
+            <div class="section-title">
+                Professional Summary
+            </div>
+
+            <div class="content">
+                <%= resumeData.summary || resumeData.experience %>
+            </div>
+
+        </section>
+
+    <% } %>
+
+
+    <!-- =========================================
+         LINKS
+    ========================================= -->
+
+    <% if (
+        resumeData.github ||
+        resumeData.linkedin ||
+        resumeData.portfolio
+    ) { %>
+
+        <section class="section">
+
+            <div class="section-title">
+                Professional Links
+            </div>
+
+            <div class="links">
+
+                <% if (resumeData.github) { %>
+
+                    <a
+                        href="<%= resumeData.github %>"
+                        target="_blank"
+                    >
+                        GitHub
+                    </a>
+
+                <% } %>
+
+
+                <% if (resumeData.linkedin) { %>
+
+                    <a
+                        href="<%= resumeData.linkedin %>"
+                        target="_blank"
+                    >
+                        LinkedIn
+                    </a>
+
+                <% } %>
+
+
+                <% if (resumeData.portfolio) { %>
+
+                    <a
+                        href="<%= resumeData.portfolio %>"
+                        target="_blank"
+                    >
+                        Portfolio
+                    </a>
+
+                <% } %>
+
+            </div>
+
+        </section>
+
+    <% } %>
+
+
+    <!-- =========================================
+         TECHNICAL SKILLS
+    ========================================= -->
+
+    <%
+        var professionalSkills = [];
+
+        if (Array.isArray(resumeData.skills)) {
+
+            professionalSkills = resumeData.skills;
+
+        } else if (
+            typeof resumeData.skills === "string"
+        ) {
+
+            professionalSkills = resumeData.skills
+                .split(",")
+                .map(function(skill) {
+                    return skill.trim();
+                })
+                .filter(function(skill) {
+                    return skill.length > 0;
+                });
+
+        } else if (
+            resumeData.skills &&
+            typeof resumeData.skills === "object"
+        ) {
+
+            professionalSkills = Object.values(
+                resumeData.skills
+            ).flatMap(function(value) {
+
+                if (Array.isArray(value)) {
+                    return value;
+                }
+
+                if (typeof value === "string") {
+
+                    return value
+                        .split(",")
+                        .map(function(skill) {
+                            return skill.trim();
+                        })
+                        .filter(Boolean);
+                }
+
+                return [];
+            });
+        }
+    %>
+
+
+    <% if (professionalSkills.length > 0) { %>
+
+        <section class="section">
+
+            <div class="section-title">
+                Technical Skills
+            </div>
+
+            <ul class="skills">
+
+                <% professionalSkills.forEach(function(skill) { %>
+
+                    <li>
+                        <%= skill %>
+                    </li>
+
+                <% }); %>
+
+            </ul>
+
+        </section>
+
+    <% } %>
+
+
+    <!-- =========================================
+         EDUCATION
+    ========================================= -->
+
+    <% if (resumeData.education) { %>
+
+        <section class="section">
+
+            <div class="section-title">
+                Education
+            </div>
+
+            <div class="content">
+                <%= resumeData.education %>
+            </div>
+
+        </section>
+
+    <% } %>
+
+
+    <!-- =========================================
+         EXPERIENCE
+    ========================================= -->
+
+    <% if (resumeData.experience) { %>
+
+        <section class="section">
+
+            <div class="section-title">
+                Experience & Internships
+            </div>
+
+            <div class="content">
+                <%= resumeData.experience %>
+            </div>
+
+        </section>
+
+    <% } %>
+
+
+    <!-- =========================================
+         PROJECTS
+    ========================================= -->
+
+    <% if (resumeData.projects) { %>
+
+        <section class="section">
+
+            <div class="section-title">
+                Projects
+            </div>
+
+            <div class="content">
+                <%= resumeData.projects %>
+            </div>
+
+        </section>
+
+    <% } %>
+
+
+    <!-- =========================================
+         CERTIFICATIONS
+    ========================================= -->
+
+    <% if (resumeData.certifications) { %>
+
+        <section class="section">
+
+            <div class="section-title">
+                Certifications
+            </div>
+
+            <div class="content">
+                <%= resumeData.certifications %>
+            </div>
+
+        </section>
+
+    <% } %>
+
+
+    <!-- =========================================
+         ACHIEVEMENTS
+    ========================================= -->
+
+    <% if (resumeData.achievements) { %>
+
+        <section class="section">
+
+            <div class="section-title">
+                Achievements
+            </div>
+
+            <div class="content">
+                <%= resumeData.achievements %>
+            </div>
+
+        </section>
+
+    <% } %>
+
+
+    <!-- =========================================
+         LANGUAGES
+    ========================================= -->
+
+    <% if (resumeData.languages) { %>
+
+        <section class="section">
+
+            <div class="section-title">
+                Languages
+            </div>
+
+            <div class="content">
+                <%= resumeData.languages %>
+            </div>
+
+        </section>
+
+    <% } %>
+
+
+    <!-- =========================================
+         DOWNLOAD PDF
+         SAME AS YOUR WORKING REFERENCE
+    ========================================= -->
+
+    <div class="actions">
+
+        <a
+            href="/resume/download"
+            class="btn"
+        >
+            Download PDF
+        </a>
+
+    </div>
+
+
+</div>
+
+</body>
+
+</html>
